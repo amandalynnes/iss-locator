@@ -10,9 +10,10 @@ from turtle import *
 def turtle_test():
     screen = Screen()
     screen.bgpic("map.gif")
+    screen.register_shape("iss.gif")
     turtle_obj = Turtle()
-    turtle_obj.shape('turtle')
-    turtle_obj.color('red', 'yellow')
+    turtle_obj.shape("iss.gif")
+    # turtle_obj.color('red', 'yellow')
     turtle_obj.begin_fill()
     while True:
         turtle_obj.forward(200)
