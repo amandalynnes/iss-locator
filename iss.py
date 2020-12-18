@@ -5,6 +5,22 @@ __author__ = 'Amanda Simmons, Peter M'
 
 import requests
 from datetime import datetime
+from turtle import *
+
+def turtle_test():
+    screen = Screen()
+    screen.bgpic("map.gif")
+    turtle_obj = Turtle()
+    turtle_obj.shape('turtle')
+    turtle_obj.color('red', 'yellow')
+    turtle_obj.begin_fill()
+    while True:
+        turtle_obj.forward(200)
+        turtle_obj.left(170)
+        if abs(turtle_obj.pos()) < 1:
+            break
+    turtle_obj.end_fill()
+    turtle_obj.done()
 
 def main():
     response_obj = requests.get('http://api.open-notify.org/astros.json')
@@ -22,6 +38,6 @@ def main():
     human_read_ts = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
     coords = data['iss_position']
     print(f'current geographic coordinates of space station: {coords}, timestamp: {human_read_ts}')
-
+    turtle_test()
 if __name__ == '__main__':
     main()
