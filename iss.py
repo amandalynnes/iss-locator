@@ -8,13 +8,17 @@ import requests
 from datetime import datetime
 import turtle
 
-def turtle_things(coords):
+def turtle_main(coords):
     screen = turtle.Screen()
     screen.title("Follow the Space station!")
     screen.bgpic("map.gif")
     screen.register_shape("iss.gif")
     screen.setup(width=720, height=360, startx=None, starty=None)
     turtle_obj = turtle.Turtle()
+    yellow_dot = turtle.Turtle()
+    yellow_dot.color("yellow")
+    yellow_dot.shape("circle")
+
     turtle_obj.penup()
     turtle_obj.setheading(90)
     turtle_obj.shape("iss.gif")
@@ -36,7 +40,7 @@ def main():
     human_read_ts = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
     coords = data['iss_position']
     print(f'current geographic coordinates of space station: {coords}, timestamp: {human_read_ts}')
-    turtle_things(coords)
+    turtle_main(coords)
     turtle.done()
 if __name__ == '__main__':
     main()
