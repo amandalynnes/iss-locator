@@ -8,23 +8,28 @@ import requests
 from datetime import datetime
 import turtle
 
+
 def turtle_main(coords):
     screen = turtle.Screen()
     screen.title("Follow the Space station!")
     screen.bgpic("map.gif")
     screen.register_shape("iss.gif")
     screen.setup(width=720, height=360, startx=None, starty=None)
+    screen.setworldcoordinates(-180, -90, 180, 90)
     turtle_obj = turtle.Turtle()
-    yellow_dot = turtle.Turtle()
-    yellow_dot.color("yellow")
-    yellow_dot.shape("circle")
+    indy_location = turtle.Turtle()
+    indy_location.penup()
+    indy_location.setheading(90)
+    indy_location.hideturtle()
+    indy_location.goto(-86.148003, 39.791000)
+    indy_location.dot(5, "yellow")
 
     turtle_obj.penup()
     turtle_obj.setheading(90)
     turtle_obj.shape("iss.gif")
     lat = int(float(coords['latitude']))
     lon = int(float(coords['longitude']))
-    turtle_obj.goto(lat, lon)
+    turtle_obj.goto(lon, lat)
 
 def main():
     response_obj = requests.get('http://api.open-notify.org/astros.json')
